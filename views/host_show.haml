@@ -22,11 +22,15 @@
       %div.host_field
         %label Total Memory: 
         %span
-          = humanize_bytes(@host.real_ram)
+          = "#{@host.real_ram} MB"
       %div.host_field
         %label Free Memory:
         %span 
-          = humanize_bytes(@host.ram)
+          = "#{@host.ram.to_i - @host.ram_used.to_i} MB"
+      %div.host_field
+        %label Used Memory:
+        %span 
+          = "#{@host.ram_used.to_i} MB"
       %div.host_field
         %label Number of CPUs:
         %span
@@ -34,7 +38,7 @@
       %div.host_field
         %label Resident VMs:
         %span
-          = @host.virtual_machines.size - 1
+          = @host.virtual_machines.size
   %div.itemlist
     %div.itemlist_title{ :id => 'resident_vms' }
       Resident VMs
