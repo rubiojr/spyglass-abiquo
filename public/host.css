@@ -1,0 +1,69 @@
+.host {
+}
+
+.host_briefing {
+  width: 400px;
+}
+
+.resident_vm_list {
+  margin-top: 20px;
+}
+
+.resident_vm_table {
+  width: 100%;
+}
+
+.resident_vm_list_header {
+  font-weight: bold;
+  font-size: 12;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.resident_vm_cell {
+  background: #ECE9E9;
+  margin-top: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.sec_title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.host_list_row {
+}
+
+div.host_cell_overview {
+  font-weight: normal;
+  font-size: x-small;
+  margin-left: 10px;
+}
+
+td.host_cell {
+  border-bottom: 5px solid transparent;
+  text-align: left;
+  text-indent: 5px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #605D5D;
+}
+
+td.host_cell_op {
+  border-bottom: 10px;
+  background-color: #B9B9B9;
+  text-indent: 5px;
+  font-weight: bold;
+  padding-right: 10px;
+  width: 60px;
+  font-size: 18px;
+}
+td.host_cell_op a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+td.host_cell_op a:hover {
+  color: #FF7700;
+}

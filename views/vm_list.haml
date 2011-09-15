@@ -1,0 +1,30 @@
+%div.itemlist
+  %div.itemlist_title
+    VMs in cluster: 
+    = @all_vms.size - hosts.size
+  %table.itemlist_table
+    %tr
+      %td.itemlist_header VM Label
+      %td.itemlist_header RAM
+      %td.itemlist_header Power State
+      %td.itemlist_header CPUs
+      %td.itemlist_header Enterprise 
+      %td.itemlist_header VDC
+    - @all_vms.each do |vm|
+      - next if vm.name == 'Domain-0'
+      %tr
+        %td.itemlist_cell
+          = vm.name
+        %td.itemlist_cell
+          = humanize_bytes(vm.ram)
+        %td.itemlist_cell
+          = vm.state
+        %td.itemlist_cell
+          = vm.cpu
+        %td.itemlist_cell
+          = vm.enterprise.name rescue ''
+        %td.itemlist_cell
+          = vm.vdc.name rescue ''
+        %td.itemlist_cell
+          %a{ :href => "/vm/show/#{vm.name}"}
+            show

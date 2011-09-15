@@ -1,0 +1,45 @@
+%div.left_column
+  %div.summary_box
+    - vm_count = 0
+    - tmem = 0
+    - used_mem = 0
+    - hcpus = 0
+    - xen_versions = []
+    - @hosts.each { |h| 
+    -   vm_count += h.virtual_machines.size - 1 
+    -   tmem += h.ram.to_i
+    -   used_mem += h.ram_used.to_i
+    -   hcpus += h.real_cpu.to_i
+    -   xv = h.hypervisortype.to_s
+    -   xen_versions << 'foo'
+    - }
+    %div.summary_box_title Cluster Summary
+    %div.summary_box_item
+      %label VMs:
+      %span
+        = vm_count
+    %div.summary_box_item
+      %label Memory Available:
+      %span
+        = humanize_bytes(tmem)
+    %div.summary_box_item
+      %label Used Memory:
+      %span
+        = humanize_bytes(used_mem)
+    %div.summary_box_item
+      %label CPUs:
+      %span
+        = hcpus
+    %div.summary_box_item
+      %label Number of Nodes:
+      %span
+        = @hosts.size
+    %div.summary_box_item
+      %label Xen Version:
+      %ul
+        - xen_versions.each do |xv|
+          %li
+            = "Xen #{xv}"
+
+%div.right_column
+  = partial :host_list_row, @hosts

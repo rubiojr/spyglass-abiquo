@@ -1,0 +1,32 @@
+%div.itemlist
+  %div.itemlist_title
+    = "#{@vms.size} VMs found"
+  %table.itemlist_table
+    %tr
+      %td.itemlist_header VM Label
+      %td.itemlist_header Max Mem
+      %td.itemlist_header Power State
+      %td.itemlist_header CPUs
+      %td.itemlist_header Enterprise 
+      %td.itemlist_header VDC
+      %td.itemlist_header Start Time
+    - @vms.each do |vm|
+      - next if vm.name == 'Domain-0'
+      %tr
+        %td.itemlist_cell
+          = vm.name
+        %td.itemlist_cell
+          = humanize_bytes(vm.ram)
+        %td.itemlist_cell
+          = vm.state
+        %td.itemlist_cell
+          = vm.cpu
+        %td.itemlist_cell
+          = vm.enterprise.name rescue ''
+        %td.itemlist_cell
+          = vm.vdc.name rescue ''
+        %td.itemlist_cell
+          = 'Unknown'
+        %td.itemlist_cell
+          %a{ :href => "/vm/show/#{vm.name}"}
+            show

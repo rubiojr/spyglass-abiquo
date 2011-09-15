@@ -1,0 +1,26 @@
+%html
+  %head
+    %title Spyglass
+    - if @refresh_page
+      %meta{ 'http-equiv' => 'refresh', :content => '60' }
+    %link{ :rel => 'stylesheet', :type => 'text/css', :href => '/style.css' }
+    %link{ :rel => 'stylesheet', :type => 'text/css', :href => '/host.css' }
+    %link{ :rel => 'stylesheet', :type => 'text/css', :href => '/vm.css' }
+    %link{ :rel => 'stylesheet', :type => 'text/css', :href => '/home.css' }
+    %link{ :rel => 'stylesheet', :type => 'text/css', :href => '/host_list.css' }
+  %body
+    %div
+      %div.logo
+        %img{ :src => '/images/csic_logo_alpha_white_small.png' }
+      %div.navbar_strip
+        Spyglass
+      %div#navbar
+        %a{ :href => '/' } home
+        %a{ :href => '/host/list' } hosts
+        %a{ :href => '/vm/list' } guests
+        //%a{ :href => '/dashboard' } dashboard
+    %div{ :class => 'navbar_separator' }
+    %div.page
+      %div.page_title
+        = @page_title
+      = yield

@@ -1,0 +1,10 @@
+- @hosts.each do |h|
+  %div
+    %b 
+      = h.label
+    %div
+      Total Memory: 
+      = humanize_bytes(h.metrics.memory_total)
+    %div
+      Free Memory:
+      = humanize_bytes(h.metrics.memory_free)

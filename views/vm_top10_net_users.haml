@@ -1,0 +1,34 @@
+%div.itemlist
+  %div.itemlist_title
+    Ouput Bytes (Upstream)
+  %table.itemlist_table
+    %tr
+      %td.itemlist_header VM Label
+      %td.itemlist_header Device
+      %td.itemlist_header Kbs OUT
+    - @netout.each do |vif|
+      %tr
+        %td.itemlist_cell
+          %a{ :href => "/vm/show/#{vif.vm.label}" }
+            = vif.vm.label
+        %td.itemlist_cell
+          = vif.device
+        %td.itemlist_cell
+          = "%0.2f" % vif.metrics.io_write_kbs
+
+%div.itemlist
+  %div.itemlist_title
+    Input Bytes (Downstream)
+  %table.itemlist_table
+    %tr
+      %td.itemlist_header VM Label
+      %td.itemlist_header Kbs IN
+    - @netin.each do |vif|
+      %tr
+        %td.itemlist_cell
+          %a{ :href => "/vm/show/#{vif.vm.label}" }
+            = vif.vm.label
+        %td.itemlist_cell
+          = vif.device
+        %td.itemlist_cell
+          = "%0.2f" % vif.metrics.io_read_kbs

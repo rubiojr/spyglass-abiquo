@@ -1,0 +1,66 @@
+%div.host
+  %div.page_menu
+    %span.page_menu_item
+      %a{ :href => '#graphs' }
+        Graphs
+    %span.page_menu_item
+      %a{ :href => '#resident_vms' }
+        Resident VMs
+    %span.page_menu_item
+      %a{ :href => '#cpu_usage' }
+        CPU Usage
+  %div.host_briefing
+    %div.host_header
+      %img{ :src => "/images/server.png" }
+      %label
+        = @host.name
+    %div.host_details
+      %div.host_field
+        %label Hypervisor:
+        %span 
+          = @host.hypervisortype
+      %div.host_field
+        %label Total Memory: 
+        %span
+          = humanize_bytes(@host.real_ram)
+      %div.host_field
+        %label Free Memory:
+        %span 
+          = humanize_bytes(@host.ram)
+      %div.host_field
+        %label Number of CPUs:
+        %span
+          = @host.real_cpu
+      %div.host_field
+        %label Resident VMs:
+        %span
+          = @host.virtual_machines.size - 1
+  %div.itemlist
+    %div.itemlist_title{ :id => 'resident_vms' }
+      Resident VMs
+    %table.itemlist_table
+      %tr
+        %td.itemlist_header VM Name
+        %td.itemlist_header RAM 
+        %td.itemlist_header Power State
+        %td.itemlist_header CPUs
+        %td.itemlist_header Enterprise
+        %td.itemlist_header VDC
+      - @host.virtual_machines.each do |vm|
+        - next if vm.name == 'Domain-0'
+        %tr
+          %td.itemlist_cell
+            = vm.name
+          %td.itemlist_cell
+            = humanize_bytes(vm.ram)
+          %td.itemlist_cell
+            = vm.state
+          %td.itemlist_cell
+            = vm.cpu
+          %td.itemlist_cell
+            = vm.enterprise.name rescue ''
+          %td.itemlist_cell
+            = vm.vdc.name rescue ''
+          %td.itemlist_cell
+            %a{ :href => "/vm/show/#{vm.name}"}
+              show

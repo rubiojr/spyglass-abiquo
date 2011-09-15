@@ -1,0 +1,21 @@
+%div.home_menu
+  %div.home_menu_item
+    %a{ :href => '/host/list' }
+      Hosts
+    %div.home_menu_item_desc List controlled Dom0s
+  %div.home_menu_item
+    %a{ :href => '/vm/list' }
+      Guests
+    %div.home_menu_item_desc List controlled Guests (alphabetically sorted)
+  %div.home_menu_item
+    %a{ :href => '/vm/recent' }
+      Recently created
+    %div.home_menu_item_desc List of recently created VMs (sorted by creation date)
+  %div.home_menu_item
+    Find VM
+    %br
+    %form{ :action => '/vm/find', :method => 'get' }
+      %label{ :for => 'exp' }
+        vm name:
+      %input{ :name => 'exp', :id => "exp" }
+      %input{ :value => 'find', :type => 'submit' }

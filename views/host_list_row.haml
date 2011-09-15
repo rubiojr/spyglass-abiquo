@@ -1,0 +1,16 @@
+%table{ :class => "hostlist", :cellspacing => "0" }
+  %tr{ :class => 'host_list_row' }
+    %td{ :class => "host_cell" }
+      = host_list_row.name
+      %div{:class => 'host_cell_overview'}
+        Resident VMs:
+        = host_list_row.virtual_machines.size - 1
+        | Free Memory:
+        = humanize_bytes host_list_row.ram
+        | CPUs:
+        = host_list_row.real_cpu
+        | Xen Version:
+        = 'foo'
+    %td{ :class=> "host_cell_op" }
+      %a{ :href => "/host/show/#{host_list_row.name}" }
+        show

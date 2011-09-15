@@ -1,0 +1,32 @@
+%div.vm
+  %div.vm_briefing
+    %div.vm_header
+      %img{ :src => "/images/server.png" }
+      %label
+        = @vm.name
+    %div.vm_details
+      %div.vm_field
+        %label Abiquo UUID:
+        %span 
+          = @vm.name
+      %div.vm_field
+        %label Enterprise:
+        %span 
+          = @vm.enterprise.name rescue ''
+      %div.vm_field
+        %label RAM:
+        %span 
+          = humanize_bytes(@vm.ram)
+      %div.vm_field
+        %label Number of CPUs:
+        %span 
+          = @vm.cpu
+      %div.vm_field
+        %label Start Time: 
+        %span
+          = ''
+      %div.vm_field
+        %label Resident on: 
+        %span
+          %a{ :href => "/host/show/#{@vm.machine.name}" }
+            = @vm.machine.name

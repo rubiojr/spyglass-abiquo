@@ -1,0 +1,14 @@
+%div.itemlist
+  %div.itemlist_title
+    Ouput Bytes (Upstream)
+  %table.itemlist_table
+    %tr
+      %td.itemlist_header VM Label
+      %td.itemlist_header CPU Usage
+    - @ttcpu.each do |vm|
+      %tr
+        %td.itemlist_cell
+          %a{ :href => "/vm/show/#{vm.label}" }
+            = vm.label
+        %td.itemlist_cell
+          = "%0.2f" % (vm.metrics.vcpus_utilisation['0'] * 100)
