@@ -21,11 +21,11 @@
     %div.summary_box_item
       %label Memory Available:
       %span
-        = humanize_bytes(tmem)
+        = "#{tmem.megabytes.to.gigabytes} GB"
     %div.summary_box_item
       %label Used Memory:
       %span
-        = humanize_bytes(used_mem)
+        = "#{used_mem.megabytes.to.gigabytes} GB"
     %div.summary_box_item
       %label CPUs:
       %span
